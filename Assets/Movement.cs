@@ -33,40 +33,40 @@ public class Movement : MonoBehaviour
 
         if (controls == ControlScheme.WASD)
         {
+			if (Input.GetKey(KeyCode.W))
+            {
+                transform.Translate(0, 1f * speed * Time.deltaTime, 0);
+            }
             if (Input.GetKey(KeyCode.A))
             {
                 transform.Translate(-1f * speed * Time.deltaTime, 0, 0);
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Translate(1f * speed * Time.deltaTime, 0, 0);
             }
             if (Input.GetKey(KeyCode.S))
             {
                 transform.Translate(0, -1f * speed * Time.deltaTime, 0);
             }
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.D))
             {
-                transform.Translate(0, 1f * speed * Time.deltaTime, 0);
+                transform.Translate(1f * speed * Time.deltaTime, 0, 0);
             }
         }
         else // Flechas
         {
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                transform.Translate(0, 1f * speed * Time.deltaTime, 0);
+            }
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.Translate(-1f * speed * Time.deltaTime, 0, 0);
-            }
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                transform.Translate(1f * speed * Time.deltaTime, 0, 0);
             }
             if (Input.GetKey(KeyCode.DownArrow))
             {
                 transform.Translate(0, -1f * speed * Time.deltaTime, 0);
             }
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.RightArrow))
             {
-                transform.Translate(0, 1f * speed * Time.deltaTime, 0);
+                transform.Translate(1f * speed * Time.deltaTime, 0, 0);
             }
         }
 
