@@ -29,49 +29,50 @@ public class Movement : MonoBehaviour
 
     void PlayerMovement()
     {
-        Vector2 dir = Vector2.zero;
-
-        if (controls == ControlScheme.WASD)
+        switch (controls)
         {
-			if (Input.GetKey(KeyCode.W))
-            {
-                transform.Translate(0, 1f * speed * Time.deltaTime, 0);
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.Translate(-1f * speed * Time.deltaTime, 0, 0);
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                transform.Translate(0, -1f * speed * Time.deltaTime, 0);
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Translate(1f * speed * Time.deltaTime, 0, 0);
-            }
-        }
-        else // Flechas
-        {
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                transform.Translate(0, 1f * speed * Time.deltaTime, 0);
-            }
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                transform.Translate(-1f * speed * Time.deltaTime, 0, 0);
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                transform.Translate(0, -1f * speed * Time.deltaTime, 0);
-            }
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                transform.Translate(1f * speed * Time.deltaTime, 0, 0);
-            }
-        }
+            case ControlScheme.WASD:
+                if (Input.GetKey(KeyCode.W))
+                {
+                    transform.Translate(0, 1f * speed * Time.deltaTime, 0);
+                }
+                if (Input.GetKey(KeyCode.A))
+                {
+                    transform.Translate(-1f * speed * Time.deltaTime, 0, 0);
+                }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    transform.Translate(0, -1f * speed * Time.deltaTime, 0);
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    transform.Translate(1f * speed * Time.deltaTime, 0, 0);
+                }
+                break;
 
-        // Movimiento fijo
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+            case ControlScheme.Arrows:
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    transform.Translate(0, 1f * speed * Time.deltaTime, 0);
+                }
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    transform.Translate(-1f * speed * Time.deltaTime, 0, 0);
+                }
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    transform.Translate(0, -1f * speed * Time.deltaTime, 0);
+                }
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    transform.Translate(1f * speed * Time.deltaTime, 0, 0);
+                }
+                break;
+
+            default:
+                Debug.LogWarning("Esquema de control no asignado. No hay movimiento.");
+                break;
+        }
     }
 
     void Rotation()
@@ -91,7 +92,11 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.R))
         {
-            sr.color = new Color(Random.value, Random.value, Random.value);
+            Color color = Color.white;
+            color.r = Random.Range(0, 1f);
+            color.g = Random.Range(0, 1f);
+            color.b = Random.Range(0, 1f);
+            sr.color = color;
         }
     }
 }
